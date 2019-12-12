@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    {% if user.is_anonymous %}
+        <a href="{% url 'login' %}"> Login </a>
+    {% else %}
+        {{ user.email }}
+    {% endif %}
+
+    <div>
+        Welcome !!!
+
+        Latest blog list
+    </div>
+
+{% if request.user.is_authenticated %}
+    <a href="{% url 'blog_create' %}" class="ui blue button">Create new blog</a>
+{% endif %}
+
+<div class="ui relaxed divided list">
+    {% for blog in blogs %}
+        <i class="edit icon"></i>
+        <a href="{% url 'blog_view' blog.pk %}" class="item">
+        {{ blog.title }}
+        </a>
+
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="ui title header">{{ blog.tile }}</div>
+    <div>{{ blog.date }}</div>
+    <div>{{ blog.author }}</div>
+    <div class="ui text container">
+    {{ blog.content }}
+    </div>
+{% endblock %}
